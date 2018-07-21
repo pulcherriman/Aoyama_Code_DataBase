@@ -1,9 +1,12 @@
 {% extends 'ACDB_app/base.html' %}
 
 {% block content %}
+	<p> {{Input}}</p>
 	{% for source in Sources %}
-		<p>
-			{{source.judgeId}}
-		</p>
+		<p>{{source.problemId}} </p>
+		<p>{{source.submissionDate}} </p>
+		<pre>
+			{{source.sourceCode}}
+		</pre>
 	{% endfor %}
 {% endblock content %}
