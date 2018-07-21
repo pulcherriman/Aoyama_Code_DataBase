@@ -2,6 +2,8 @@ from django.shortcuts import render
 import requests
 import json
 from .models import Source
+from .forms import AccountForm
+from django.shortcuts import *
 
 # Create your views here.
 def index(request):
