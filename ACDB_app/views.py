@@ -14,6 +14,19 @@ def getSource(request):
 	for x in r.json():
 		res=Source(
 			judgeId=x['judgeId'],
+			userId=x['userId'], 
+			problemId=x['problemId'],
+			language =x['language'],
+			version =x['version'],
+			submissionDate = x['submissionDate'],
+			judgeDate = x['judgeDate'],
+			cpuTime = x['cpuTime'],
+			memory = x['memory'],
+			codeSize = x['codeSize'],
+			server = x['server'],
+			policy = x['policy'],
+			rating = x['rating'],
+			review = x['review']
 		)
 		
 		results.append(res)
