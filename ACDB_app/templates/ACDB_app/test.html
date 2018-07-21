@@ -4,9 +4,9 @@
 	<p> {{Input}}</p>
 	{% for source in Sources %}
 		<p>{{source.problemId}} </p>
-		<p>{{source.submissionDate}} </p>
+		<p>{{source.submissionDateString}} </p>
 		<pre>
-			{{source.sourceCode}}
+{{source.sourceCode}}
 		</pre>
 	{% endfor %}
 {% endblock content %}
