@@ -16,4 +16,5 @@ class Source(models.Model):
 	rating = models.IntegerField()
 	reviewed = models.IntegerField()
 	sourceCode = models.TextField()
+	submissionDateString=""
 	

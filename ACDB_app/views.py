@@ -4,6 +4,7 @@ import json
 from .models import Source
 from .forms import AccountForm
 from django.shortcuts import *
+from datetime import datetime
 
 # Create your views here.
 def index(request):
@@ -26,6 +27,7 @@ def getSource(request,input):
 		res.codeSize=x['codeSize']
 		res.server=x['server']
 		res.rating=x['rating']
+		res.submissionDateString=datetime.utcfromtimestamp(res.submissionDate/1000).strftime('%Y-%m-%d %H:%M:%S')
 		results.append(res)
 	return render(request, 'ACDB_app/test.html',{'Input':input, 'Sources':results})
 	
