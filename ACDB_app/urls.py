@@ -5,4 +5,5 @@ from . import views
 urlpatterns = [
     url(r'^$',RedirectView.as_view(url='/index/')),
     url(r'^index/$', views.index, name='index'),
+    url(r'^getsource/$', views.getSource, name='getsource'),
 ]
