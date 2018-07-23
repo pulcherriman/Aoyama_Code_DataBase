@@ -1,0 +1,27 @@
+{% extends 'ACDB_app/base.html' %}
+
+{% block content %}
+	<p> {{Input}}さんのAC履歴</p>
+	<div class="AC_list">
+	<table>
+		<tr>
+			<th>問題番号</th>
+			<th>実行時間</th>
+			<th>コード長</th>
+			<th>使用言語</th>
+			<th>提出日時</th>
+			<th>詳細</th>
+		</tr>
+		{% for source in Sources %}
+		<tr>
+			<td align="center"><a target="_blank" href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id={{source.problemId}}&lang=jp"><b>{{source.problemId}}</b></a></td>
+			<td align="center">{{source.cpuTimeString}}</td>
+			<td align="right">{{source.codeSize}}</td>
+			<td align="center">{{source.language}}</td>
+			<td align="center">{{source.submissionDateString}}</td>
+			<td><a href="/submission/{{source.judgeId}}">詳細</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+	</div>
+{% endblock content %}

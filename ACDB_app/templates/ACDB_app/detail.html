@@ -1,0 +1,14 @@
+{% extends 'ACDB_app/base.html' %}
+
+{% block content %}
+	<div class="AC_list">
+	<p>ユーザ名：{{Data.userId}}</p>
+	<p>提出番号：{{Data.judgeId}}</p>
+	<p>問題番号：{{Data.problemId}}</p>
+	<p>使用言語：{{Data.language}}</p>
+	<p>コード</p>
+<pre>
+{{Data.sourceCode}}
+</pre>
+	</div>
+{% endblock content %}

@@ -14,7 +14,8 @@ class Source(models.Model):
 	server = models.IntegerField()
 	policy = models.CharField(max_length=100)
 	rating = models.IntegerField()
-	reviewed = models.IntegerField()
+	review = models.IntegerField()
 	sourceCode = models.TextField()
 	submissionDateString=""
+	cpuTimeString=""
 	

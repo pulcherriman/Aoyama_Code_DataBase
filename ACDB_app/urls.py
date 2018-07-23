@@ -6,5 +6,6 @@ from . import views
 urlpatterns = [
     url(r'^$',RedirectView.as_view(url='/index/')),
     url(r'^index/$', views.index, name='index'),
-    path('getsource/<str:input>', views.getSource, name='getsource'),
+    path('user/<str:input>', views.getUser, name='getuser'),
+    path('submission/<int:id>', views.getSubmission, name='getSubmission'),
 ]
