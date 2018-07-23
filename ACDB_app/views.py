@@ -37,7 +37,7 @@ def getUser(request,input):
 			rating=x['rating'],
 			review= x['review'],
 		)
-		res.submissionDateString=datetime.utcfromtimestamp(res.submissionDate/1000).strftime('%Y-%m-%d %H:%M:%S')
+		res.submissionDateString=datetime.utcfromtimestamp(res.submissionDate/1000).strftime('%Y/%m/%d %H:%M:%S')
 		res.cpuTimeString='{:.3f}'.format(res.cpuTime/1000)
 		results.append(res)
 	return render(request, 'ACDB_app/submissions.html',{'Input':input, 'Sources':results})
@@ -56,7 +56,7 @@ def getSubmission(request,id):
 		policy = r['policy'],
 		sourceCode = r['sourceCode'],
 	)
-	res.submissionDateString=datetime.utcfromtimestamp(res.submissionDate/1000).strftime('%Y-%m-%d %H:%M:%S')
+	res.submissionDateString=datetime.utcfromtimestamp(res.submissionDate/1000).strftime('%Y/%m/%d %H:%M:%S')
 	res.cpuTimeString='{:.3f}'.format(res.cpuTime/1000)
 	return render(request, 'ACDB_app/detail.html',{'Data':res})
 	
