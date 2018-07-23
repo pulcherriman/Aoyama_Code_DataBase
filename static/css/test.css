@@ -1,3 +1,14 @@
-h1 a {
-    color: #FFFFFF;
+body{
+	background-color: lightblue;
+	margin:5% 10% 0% 10%;
+	
+}
+
+.page-header a {
+    color: darkgreen;
+	text-decoration: none;
+}
+
+.page-header a:hover {
+    color: darkgreen;
 }

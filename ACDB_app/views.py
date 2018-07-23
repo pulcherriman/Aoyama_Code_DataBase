@@ -29,7 +29,7 @@ def getSource(request,input):
 		res.rating=x['rating']
 		res.submissionDateString=datetime.utcfromtimestamp(res.submissionDate/1000).strftime('%Y-%m-%d %H:%M:%S')
 		results.append(res)
-	return render(request, 'ACDB_app/test.html',{'Input':input, 'Sources':results})
+	return render(request, 'ACDB_app/code_list.html',{'Input':input, 'Sources':results})
 	
 def getCode(id):
 	uri="https://judgeapi.u-aizu.ac.jp/reviews/"+str(id)
