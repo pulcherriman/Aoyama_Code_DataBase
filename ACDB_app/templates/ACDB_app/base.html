@@ -1,27 +1,34 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
+	<div class="bg-mask">
     <head>
 		<title>Aoyama Code DataBase</title>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="{% static 'css/test.css' %}">
+		<link href="https://fonts.googleapis.com/css?family=Poor+Story|Raleway" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
     </head>
     <body>
-		<div class="page-header">
-			<h1><a href="/">Aoyama Code DataBase</a></h1>
-		</div>
-		<div class="content container">
-			<div class="row">
-				<div class="col-md-8">
-					{% block content %}
-					{% endblock %}
+		<div class="bg-mask">
+			<div class="page-header">
+				<h1><a href="/">Aoyama Code DataBase</a></h1>
+			</div>
+			<div class="content-container">
+				<div class="bg-mask">
+					<div class="row">
+						<div class="col-md-8">
+							{% block content %}
+							{% endblock %}
+						</div>
+					</div>
 				</div>
 			</div>
+			<footer >
+				<hr>
+				こぴーらいと：みのぽや
+			</footer>
 		</div>
-		<footer style="margin-top:95%">
-			<hr>
-			こぴーらいと：みのぽや
-		</footer>
     </body>
 </html>
