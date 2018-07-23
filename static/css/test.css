@@ -42,6 +42,7 @@ body{
 
 .code-margin{
 	padding-left:1em;
+	white-space: pre-wrap ;
 }
 
 .submission-list{
