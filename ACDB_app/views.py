@@ -5,6 +5,7 @@ from .models import Source
 from .forms import AccountForm
 from django.shortcuts import *
 from datetime import datetime
+import re
 
 # Create your views here.
 def index(request):
@@ -58,5 +59,53 @@ def getSubmission(request,id):
 	)
 	res.submissionDateString=datetime.utcfromtimestamp(res.submissionDate/1000).strftime('%Y/%m/%d %H:%M:%S')
 	res.cpuTimeString='{:.3f}'.format(res.cpuTime/1000)
-	return render(request, 'ACDB_app/detail.html',{'Data':res})
+
+	#雑な問題名抽出
+	uri="https://judgeapi.u-aizu.ac.jp/resources/descriptions/en/"+str(res.problemId)
+	r=requests.get(uri).json()['html']
+	res.problemName=re.search(">.*</(h|H)1>" ,r).group()[1:-5]
 	
+	return render(request, 'ACDB_app/detail.html',{'Data':res})
+
+def submit(request):
+	code='''
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+	cout<<"Hello, world!"<<endl;
+	return 0;
+}
+'''
+	lang='cpp'
+	r=execute(code,lang)
+	if(r.status_code==200):
+		return render(request, 'ACDB_app/submit.html',{"res":r.json()})
+	else:
+		return render(request, 'ACDB_app/submit.html',{"res":"Failed"})
+
+def execute(code,lang):
+	r=requests.post('http://api.paiza.io/runners/create',
+		{
+			'source_code' : code,
+			'language' : lang,
+			'api_key' : 'guest',
+		}
+	)
+	if r.status_code == 200:
+		while True:
+			r=requests.get('http://api.paiza.io/runners/get_status',
+				params={
+					'id' : r.json()['id'],
+					'api_key' : 'guest'
+				}
+			)
+			if r.json()['status'] == 'completed':
+				break;
+
+		r=requests.get('http://api.paiza.io/runners/get_details',
+			params={
+				'id' : r.json()['id'],
+				'api_key' : 'guest'
+			}
+		)
+	return r;

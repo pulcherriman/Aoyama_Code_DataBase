@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^index/$', views.index, name='index'),
     path('user/<str:input>', views.getUser, name='getuser'),
     path('submission/<int:id>', views.getSubmission, name='getSubmission'),
+	path('submit/', views.submit, name='submit')
 ]

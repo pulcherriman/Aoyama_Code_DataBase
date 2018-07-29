@@ -18,4 +18,7 @@ class Source(models.Model):
 	sourceCode = models.TextField()
 	submissionDateString=""
 	cpuTimeString=""
-	
+	problemName=""
+class Paiza_API(models.Model):
+	sourceCode=models.TextField()
+	language=models.CharField(max_length=100)

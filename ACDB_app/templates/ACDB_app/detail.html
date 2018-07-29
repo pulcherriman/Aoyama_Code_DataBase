@@ -1,12 +1,17 @@
 {% extends 'ACDB_app/base.html' %}
 
 {% block content %}
+	<div class="content-header">
+	</div>
 	<div class="AC_list">
-	<p>ユーザ名：<a href="http://judge.u-aizu.ac.jp/onlinejudge/user.jsp?id={{Data.userId}}">{{Data.userId}}</a></p>
-	<p>提出番号：<a href="http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid={{Data.judgeId}}">{{Data.judgeId}}</a></p>
-	<p>問題番号：<a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id={{Data.problemId}}">{{Data.problemId}}</a></p>
+	<p>問題名：<a target="_blank" href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id={{Data.problemId}}">{{Data.problemName}}</a></p>
+	<p>ユーザ名：<a target="_blank" href="http://judge.u-aizu.ac.jp/onlinejudge/user.jsp?id={{Data.userId}}">{{Data.userId}}</a></p>
+	<p>提出番号：<a target="_blank" href="http://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid={{Data.judgeId}}">{{Data.judgeId}}</a></p>
+	<p>提出日時：{{Data.submissionDateString}}</p>
 	<p>使用言語：{{Data.language}}</p>
-	<p>　コード：</p>
+	<p>実行時間：{{Data.cpuTimeString}}sec</p>
+	<p>メモリ使用量：{{Data.memory}}KB</p>
+	<p>コード：</p>
 <pre class="prettyprint lang-cpp">
 <div class="code-margin">
 {{Data.sourceCode}}
